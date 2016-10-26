@@ -1,7 +1,5 @@
 # Bayes.PM.Sim
-# This version produces a matrix of mean values randomly sampled from a 
-# vector of 1,0 for ten students
-# making sure they are type consistent 
+# This version generalizes the sampling function for the 1,0 to selecting N's
 #Need to source all three of these things
 source("DBDA2E-utilities.R") # Load definitions of graphics functions etc.
 source("BernBeta.R") # Load the definition of the BernBeta function
@@ -18,8 +16,21 @@ x.sample = replicate(10, sample(x, 10, replace = TRUE, prob = c(.4, .6))); x.sam
 mean(x.sample)
 x.sample.m = matrix(x.sample, 10, 10); x.sample.m
 #Gets the means for the columns
-x.sample.m.a = apply(x.sample.m, 2, mean); x.sample.m.a 
-#Need to create a matrix with the same length filled with values of N
-#To get it into the prior function a loop with two commands one for the mean and the other for n
-#If you can get the values into a data.frame then create a matrix of them
-#that this 100*10 and then apply for the median over the columns
+x.sample.m.a = apply(x.sample.m, 2, mean); x.sample.m.a
+#######################################################################################################
+# Here we are creating the N matrix
+# Currently I am just randomly sampling them and will come up with a more meaning way later
+typeof(kappa.mean.output)
+#Produces the choice of the total N for priors (must be at least 2)
+# one value for A and one value for B
+n = c(2:11)
+#Samples from x 10 and replicates this ten times with prob of .1 for each N 
+#It produces 10 sets of N's with 10 N's each
+#It produces a different set of numbers each time
+n.rep = replicate(10, sample(n, 10, replace = TRUE, prob = c(rep(.1,10)))); n.rep 
+x.sample.m = matrix(n.rep, 10, 10); n.rep
+#Gets the means for the columns
+x.sample.m.a = round(apply(x.sample.m, 2, mean), 0); x.sample.m.a
+###########################################################################################################
+
+
