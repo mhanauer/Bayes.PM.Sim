@@ -11,3 +11,5 @@ kappa.mean = function(){
   } 
 }
 kappa.mean()
+#Creates an empty matrix with one vector of 10,000 empty spots
+kappa.mean.output = matrix(nrow = 1, ncol = 10000); kappa.mean.output
