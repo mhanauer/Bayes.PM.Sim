@@ -1,6 +1,7 @@
 # Bayes.PM.Sim
 # This version gets the values into the empty list kappa.mean.output by
 # making sure they are type consistent 
+# Also since version 2 doesn't work this is the version three for working versions
 #Need to source all three of these things
 source("DBDA2E-utilities.R") # Load definitions of graphics functions etc.
 source("BernBeta.R") # Load the definition of the BernBeta function
