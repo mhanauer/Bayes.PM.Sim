@@ -11,10 +11,11 @@ x = c(1,0)
 #It produces 10 sets of data with 10 data points each
 #It produces a different set of numbers each time
 x.sample = replicate(10, sample(x, 10, replace = TRUE, prob = c(.4, .6))); x.sample
-mean(x.sample)
 x.sample.m = matrix(x.sample, 10, 10); x.sample.m
 #Gets the means for the columns
 x.sample.m.a = apply(x.sample.m, 2, mean); x.sample.m.a
+# Changing the name for convience 
+mean.prior = x.sample.m.a; mean.prior
 #######################################################################################################
 # Here we are creating the N matrix
 # Currently I am just randomly sampling them and will come up with a more meaning way later
@@ -28,13 +29,10 @@ n = c(2:11)
 n.rep = replicate(10, sample(n, 10, replace = TRUE, prob = c(rep(.1,10)))); n.rep 
 n.rep.m = matrix(n.rep, 10, 10); n.rep
 #Gets the means for the columns
-n.rep.m.a = round(apply(x.sample.m, 2, mean), 0); x.sample.m.a
+n.rep.m.a = round(apply(n.rep.m, 2, mean), 0); n.rep.m.a
+# Changing the name for convience
+n.prior = n.rep.m.a; n.prior
 ###########################################################################################################
-# Here I am attempting to run the loop for one value with the other value being constant
-#Need to source all three of these things
-source("DBDA2E-utilities.R") # Load definitions of graphics functions etc.
-source("BernBeta.R") # Load the definition of the BernBeta function
-#To get the mean from the prior data
-#To get the shape values
-betaABfromMeanKappa( mean=.4, kappa=11)
-betaABfromMeanKappa( mean=.5, kappa=11)
+# Here I am changing the mean and n into the shape parameters using Krusskhe's formula 
+mean.prior.a = mean.prior*n.prior; mean.prior
+n.prior.b = (1-mean.prior)*n.prior; n.prior
