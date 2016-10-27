@@ -37,13 +37,12 @@ n.prior = n.rep.m.a; n.prior
 a = mean.prior*n.prior; mean.prior; a
 b = (1-mean.prior)*n.prior; n.prior; b
 ###############################################################################################################
-# Here we I have an example of how to get the postieror distribution.  It does work, but need extract the mode
-# or check if the median makes sense
-a = .1
+# Here is code for calculating the posterior mean that is correct
+a = 5
 b = 5
-Data = c(1,rep(0,9)); Data
+Data = c(rep(1,1),rep(0,9)); Data
 z = sum( Data ) # number of 1's in Data
 N = length( Data ) 
 Theta = seq(0.001,0.999,by=0.001) # points for plotting
 pThetaGivenData = dbeta( Theta , a+z , b+N-z ); pThetaGivenData  # posterior for plotting
-median(pThetaGivenData)
+post.mean = (z+a)/(N +a+b); post.mean
