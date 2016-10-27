@@ -33,6 +33,17 @@ n.rep.m.a = round(apply(n.rep.m, 2, mean), 0); n.rep.m.a
 # Changing the name for convience
 n.prior = n.rep.m.a; n.prior
 ###########################################################################################################
-# Here I am changing the mean and n into the shape parameters using Krusskhe's formula 
-mean.prior.a = mean.prior*n.prior; mean.prior
-n.prior.b = (1-mean.prior)*n.prior; n.prior
+# Here I am changing the shape parameters 
+a = mean.prior*n.prior; mean.prior; a
+b = (1-mean.prior)*n.prior; n.prior; b
+###############################################################################################################
+# Here we I have an example of how to get the postieror distribution.  It does work, but need extract the mode
+# or check if the median makes sense
+a = .1
+b = 5
+Data = c(1,rep(0,9)); Data
+z = sum( Data ) # number of 1's in Data
+N = length( Data ) 
+Theta = seq(0.001,0.999,by=0.001) # points for plotting
+pThetaGivenData = dbeta( Theta , a+z , b+N-z ); pThetaGivenData  # posterior for plotting
+median(pThetaGivenData)
