@@ -17,16 +17,26 @@ x.sample.m.a = apply(x.sample.m, 1, mean); x.sample.m.a
 # Changing the name for convience 
 mean.prior = x.sample.m.a; mean.prior
 #######################################################################################################
-# Here we are creating the N matrix
-# Currently I am just randomly sampling them and will come up with a more meaning way later
-typeof(kappa.mean.output)
-#Produces the choice of the total N for priors (must be at least 2)
-# one value for A and one value for B
-n = c(2:11)
-#Samples from x 10 and replicates this ten times with prob of .1 for each N 
-#It produces 10 sets of N's with 10 N's each
-#It produces a different set of numbers each time
-n.rep = replicate(10, sample(n, 10, replace = TRUE, prob = c(rep(.1,10)))); n.rep 
+######################################################################################################
+# Creating the for loop to create the length of evidence, the prob of success and failure
+# This version just has one for loop for the evidence, success, and failure
+x = c(1,0)
+Bayes.Sim.n = c(5, 10, 15); Bayes.Sim.n
+Bayes.Sim.success = c(2, 5, 8); Bayes.Sim.success
+Bayes.Sim.success.percent = Bayes.Sim.success / 10; Bayes.Sim.success.percent 
+Bayes.Sim.failure.percent = 1-Bayes.Sim.success.percent; Bayes.Sim.failure.percent
+
+test = function(){
+  for (i in Bayes.Sim.n){
+    for(j in Bayes.Sim.success.percent){
+      for(k in Bayes.Sim.failure.percent){
+    x.sample = replicate(10, sample(x, i, replace = TRUE, prob = c(j, k)))
+    print(x.sample)
+      } 
+    }
+  }
+}  
+test()
 n.rep.m = matrix(n.rep, 10, 10); n.rep
 #Gets the means for the columns
 n.rep.m.a = round(apply(n.rep.m, 2, mean), 0); n.rep.m.a
