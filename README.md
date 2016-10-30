@@ -12,8 +12,8 @@ x = c(1,0)
 #It produces a different set of numbers each time
 x.sample = replicate(10, sample(x, 10, replace = TRUE, prob = c(.4, .6))); x.sample
 x.sample.m = matrix(x.sample, 10, 10); x.sample.m
-#Gets the means for the columns
-x.sample.m.a = apply(x.sample.m, 2, mean); x.sample.m.a
+#Gets the means for the rows, because you want the mean of the student's data over time
+x.sample.m.a = apply(x.sample.m, 1, mean); x.sample.m.a
 # Changing the name for convience 
 mean.prior = x.sample.m.a; mean.prior
 #######################################################################################################
