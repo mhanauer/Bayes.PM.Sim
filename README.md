@@ -48,8 +48,8 @@ a = mean.prior*n.prior; mean.prior; a
 b = (1-mean.prior)*n.prior; n.prior; b
 ###############################################################################################################
 # Here is code for calculating the posterior mean that is correct
-a = 5
-b = 5
+a = 5 # This is the prior for a
+b = 5 # This is the prior for b
 Data = c(rep(1,1),rep(0,9)); Data
 z = sum( Data ) # number of 1's in Data
 N = length( Data ) 
