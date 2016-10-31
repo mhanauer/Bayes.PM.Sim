@@ -1,16 +1,18 @@
-# This get the values in the vector into the output variable for the length of the vector.
-# Try to generalize this to the sample and replicate functions
-# What I want to do here is get it the loop to place each value of the x.sample which is the replication 
-# of choosing i from x which is just 1 and 0.  
+# This version takes produces a matrix of means for a length of 5 for the evidence
 x = c(1,0)
-Bayes.Sim.n  = c(4,5)
-x.sample = replicate(100, sample(x, i, replace = TRUE, prob = c(.5, .5)))
+# 500 replications, because you have you have 100 replications of a length of 5
+# This produces 500 data points.  seq_along inputs each value of i for the length of 
+# of the dataset 
+Bayes.Sim.n  = replicate(500,5); Bayes.Sim.n
+x.sample = replicate(100, sample(x, 5, replace = TRUE, prob = c(.5, .5)))
+length(x.sample)
 
 Bayes.Sim.output.n.5 = NULL
 
-
-for (i in seq_along(foo)) {
-  Bayes.Sim.output.n.5[i] = foo[i]
+for (i in seq_along(Bayes.Sim.n)) {
+  x.sample = replicate(100, sample(x, i, replace = TRUE, prob = c(.5, .5)))
+  Bayes.Sim.output.n.5[[i]] = x.sample[[i]]
+  Bayes.Sim.output.n.5.matrix = matrix(Bayes.Sim.output.n.5, 100, 5)
+  Bayes.Sim.output.n.5.matrix.apply = apply(Bayes.Sim.output.n.5.matrix, 1, mean)
 }
-Bayes.Sim.output.n.5
-
+Bayes.Sim.output.n.5.matrix.apply
