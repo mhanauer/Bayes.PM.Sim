@@ -1,8 +1,18 @@
-# I am going to make a seperate dataset manually for each condition
-# The parameters are evidence length = 5,10,15; priors = .2, .5, .8
-# Here is the list of combinations: 5.2.8; 5 .8 .2; 10 .2 .8; 10 .8 .2; 15 .2 .8; 15 .8 .2; 5 .5 .5; 10 .5 .5; 15 .5 .5  
-# Bayes.Sim.output.n.5.2.8
-x = c(1,0)
-Bayes.Sim.output.n.5.2.8 = replicate(100, sample(x, 5, replace = TRUE, prob = c(.2, .8))); Bayes.Sim.output.n.5.8.2
-Bayes.Sim.output.n.5.2.8.matrix = matrix(Bayes.Sim.output.n.5.2.8, 100, 5); Bayes.Sim.output.n.5.2.8.matrix
-Bayes.Sim.output.n.5.2.8.matrix.apply = apply(Bayes.Sim.output.n.5.2.8.matrix, 1, mean); Bayes.Sim.output.n.5.2.8.matrix.apply 
+# This produces a values for mean.priors from .2, .5, .8 and from n values 5, 10, 15 
+# I should do this for all combinations 
+output.a = NULL
+output.b = NULL
+mean.prior = c(.2, .5, .8); mean.prior
+length(mean.prior)
+n.prior = c(5, 10, 15)
+length(n.prior)
+for (i in seq_along(mean.prior)){
+  for (j in seq_along(n.prior) ){
+  a = mean.prior*n.prior
+  b = (1-mean.prior)*n.prior
+  output.a[[i]] = a[[i]] 
+  output.b[[j]] = b[[j]] 
+  }
+}
+output.a
+output.b
