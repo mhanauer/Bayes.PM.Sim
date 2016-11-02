@@ -1,34 +1,120 @@
-# This produces a values for mean.priors from .3, .5, .7 and from n values 5, 10, 15 
-# This only produces A's and B's for the each value matched with each other (.3 with 5, .5 with 5, and .7 with 15)
-# This needs to be done for all possible combinations
-output.a = NULL
-output.b = NULL
-a.b = NULL
-mean.prior = c(.2, .5, .8); mean.prior
-length(mean.prior)
-n.prior = c(5, 10, 15)
-length(n.prior)
-for (i in seq_along(mean.prior)){
-  for (j in seq_along(n.prior) ){
-    a = mean.prior*n.prior
-    b = (1-mean.prior)*n.prior
-    output.a[[i]] = a[[i]] 
-    output.b[[j]] = b[[j]]
-  }
-}
-a.b. = cbind(output.a, output.b)
-########################################################################################################################
-# This takes the vectors of a's and b's and runs them through a for loop that produces posteior means for the combination
-# above.  
-a = output.a # This is the prior for a
-b = output.b # This is the prior for b
-mean.data = c(.3, .5, .7) # number of 1's in Data
-n.data = c(5, 10, 15) # number of total data points
-output.post = NULL # Empty vector to place posterior means in
-for(i in seq_along(mean.data)){
-    Theta = seq(0.001,0.999,by=0.001) # points for plotting
-    pThetaGivenData = dbeta( Theta , a+mean.data , b+n.data-mean.data ); pThetaGivenData  # posterior for plotting
-    post.mean = (mean.data+a)/(n.data +a+b)
-    output.post[[i]] = post.mean[[i]]
-}
-output.post
+#################################################################################
+# Prior = .6 Evidence = 10
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.6, genPriorN=10,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.6, audPriorN=10,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .6 Evidence = 15
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.6, genPriorN=15,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.6, audPriorN=15,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .6 Evidence = 20
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.6, genPriorN=20,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.6, audPriorN=20,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .6 Evidence = 25
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.6, genPriorN=25,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.6, audPriorN=25,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .6 Evidence = 30
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.6, genPriorN=30,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.6, audPriorN=30,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .7 Evidence = 10
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.7, genPriorN=10,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.7, audPriorN=10,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .7 Evidence = 15
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.7, genPriorN=15,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.7, audPriorN=15,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .7 Evidence = 20
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.7, genPriorN=20,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.7, audPriorN=20,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .7 Evidence = 25
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.7, genPriorN=25,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.7, audPriorN=25,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .7 Evidence = 30
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.7, genPriorN=30,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.7, audPriorN=30,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .8 Evidence = 10
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.8, genPriorN=10,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.8, audPriorN=10,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .8 Evidence = 15
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.8, genPriorN=15,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.8, audPriorN=15,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .8 Evidence = 20
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.8, genPriorN=20,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.8, audPriorN=20,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .8 Evidence = 25
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.8, genPriorN=25,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.8, audPriorN=25,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
+#################################################################################
+# Prior = .8 Evidence = 30
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.8, genPriorN=30,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.8, audPriorN=30,
+                            HDImass=0.95, initSampSize=1, verbose=TRUE )
