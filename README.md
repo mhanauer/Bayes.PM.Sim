@@ -1,4 +1,12 @@
 #################################################################################
+# Example from paper
+source("minNforHDIpower.R") # only needed once per R session
+sampSize = minNforHDIpower( genPriorMode=0.75, genPriorN=20,
+                            HDImaxwid=NULL, nullVal=0.5, ROPE=c (0.48,0.52),
+                            desiredPower=0.8,
+                            audPriorMode=0.75, audPriorN=20,
+                            HDImass=0.95, initSampSize=5, verbose=TRUE )
+#################################################################################
 # Prior = .6 Evidence = 10
 source("minNforHDIpower.R") # only needed once per R session
 sampSize = minNforHDIpower( genPriorMode=0.6, genPriorN=10,
